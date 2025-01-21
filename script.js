@@ -106,4 +106,258 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     createDigitalRain();
-}); 
+
+    class ProphecyGame {
+        constructor() {
+            this.currentLevel = 0;
+            this.levels = [
+                {
+                    id: 1,
+                    title: "The Great Fire",
+                    prophecy: "The blood of the just will be demanded of London burnt by fire in the year 66",
+                    words: ["blood", "just", "London", "fire", "66", "demanded", "burnt"],
+                    solution: ["The", "blood", "of", "the", "just", "will", "be", "demanded", "of", "London", "burnt", "by", "fire", "in", "the", "year", "66"]
+                },
+                {
+                    id: 2,
+                    title: "Sky King",
+                    prophecy: "From the sky shall come a great King of Terror",
+                    words: ["sky", "great", "King", "Terror", "come", "shall"],
+                    solution: ["From", "the", "sky", "shall", "come", "a", "great", "King", "of", "Terror"]
+                },
+                {
+                    id: 3,
+                    title: "The Shaking Earth",
+                    prophecy: "The earth shaking in the month of October",
+                    words: ["earth", "shaking", "month", "October"],
+                    solution: ["The", "earth", "shaking", "in", "the", "month", "of", "October"]
+                },
+                {
+                    id: 4,
+                    title: "The Last Vision",
+                    prophecy: "Choose the symbols that complete the prophecy",
+                    symbols: ["👑", "⚔️", "⭐", "🌍", "🔥", "🌙"],
+                    solution: ["👑", "⭐", "🌍"] // Example solution
+                }
+            ];
+            
+            this.init();
+        }
+
+        init() {
+            this.terminal = document.getElementById('prophecy-terminal');
+            
+            // Add prophecy button listener
+            const prophecyButton = document.getElementById('prophecyButton');
+            prophecyButton.addEventListener('click', () => {
+                // Add button click effect
+                prophecyButton.style.animation = 'buttonPulse 0.5s ease-out';
+                setTimeout(() => {
+                    prophecyButton.style.animation = '';
+                    this.startGame();
+                }, 500);
+            });
+        }
+
+        startGame() {
+            // Hide the prophecy button
+            document.getElementById('prophecyButton').style.display = 'none';
+            
+            this.terminal.classList.remove('hidden');
+            this.currentLevel = 1;
+            
+            // Show first level after brief delay
+            setTimeout(() => {
+                document.getElementById('start-screen').classList.add('hidden');
+                document.getElementById('level-1').classList.remove('hidden');
+            }, 2000);
+        }
+
+        initializeLevel(levelId) {
+            const level = this.levels.find(l => l.id === levelId);
+            if (!level) return;
+
+            const wordContainer = document.querySelector('.word-container');
+            const words = this.shuffleArray([...level.words]);
+
+            words.forEach(word => {
+                const wordElement = document.createElement('div');
+                wordElement.className = 'prophecy-word';
+                wordElement.textContent = word;
+                wordElement.addEventListener('click', () => this.handleWordClick(wordElement));
+                wordContainer.appendChild(wordElement);
+            });
+        }
+
+        handleWordClick(wordElement) {
+            const isSelected = wordElement.classList.contains('selected');
+            if (isSelected) {
+                wordElement.classList.remove('selected');
+                // Move back to word container
+                document.querySelector('.word-container').appendChild(wordElement);
+            } else {
+                wordElement.classList.add('selected');
+                // Move to target area
+                document.querySelector('.prophecy-target').appendChild(wordElement);
+            }
+
+            this.checkSolution();
+        }
+
+        checkSolution() {
+            const currentWords = Array.from(document.querySelector('.prophecy-target').children)
+                .map(el => el.textContent);
+            
+            const level = this.levels[this.currentLevel - 1];
+            const isCorrect = this.compareArrays(currentWords, level.solution);
+
+            if (isCorrect) {
+                this.completeLevel();
+            }
+        }
+
+        compareArrays(arr1, arr2) {
+            return arr1.length === arr2.length && 
+                   arr1.every((value, index) => value === arr2[index]);
+        }
+
+        completeLevel() {
+            // Add completion animation and effects
+            const disk = document.querySelector('.disk');
+            disk.style.animation = 'pulse 0.5s ease-in-out 3';
+            
+            setTimeout(() => {
+                // Proceed to next level or end game
+                this.currentLevel++;
+                if (this.currentLevel <= this.levels.length) {
+                    this.loadLevel(this.currentLevel);
+                } else {
+                    this.endGame();
+                }
+            }, 2000);
+        }
+
+        shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        loadLevel(levelId) {
+            const level = this.levels.find(l => l.id === levelId);
+            if (!level) return;
+
+            // Hide all screens
+            document.querySelectorAll('.game-screen').forEach(screen => {
+                screen.classList.add('hidden');
+            });
+
+            // Show new level
+            document.getElementById(`level-${levelId}`).classList.remove('hidden');
+
+            switch(levelId) {
+                case 2:
+                    this.initializeStarMap();
+                    break;
+                case 3:
+                    this.initializeGlobe();
+                    break;
+                case 4:
+                    this.initializeSymbols();
+                    break;
+            }
+
+            this.initializeLevel(levelId);
+        }
+
+        initializeStarMap() {
+            const canvas = document.getElementById('starMap');
+            const ctx = canvas.getContext('2d');
+            
+            // Draw constellation pattern
+            // Add star map drawing logic here
+        }
+
+        initializeGlobe() {
+            const globe = document.querySelector('.globe');
+            let isDragging = false;
+            let startX, startY;
+
+            globe.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+                
+                // Update globe rotation based on mouse movement
+                globe.style.transform = `rotateY(${deltaX}deg) rotateX(${deltaY}deg)`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        }
+
+        initializeSymbols() {
+            const level = this.levels[3]; // Last Vision level
+            const container = document.querySelector('.symbol-container');
+            const slots = document.querySelector('.symbol-slots');
+
+            // Create symbol slots
+            for (let i = 0; i < 3; i++) {
+                const slot = document.createElement('div');
+                slot.className = 'symbol-slot';
+                slots.appendChild(slot);
+            }
+
+            // Create clickable symbols
+            level.symbols.forEach(symbol => {
+                const symbolEl = document.createElement('div');
+                symbolEl.className = 'prophecy-symbol';
+                symbolEl.textContent = symbol;
+                symbolEl.addEventListener('click', () => this.handleSymbolClick(symbolEl));
+                container.appendChild(symbolEl);
+            });
+        }
+
+        handleSymbolClick(symbolEl) {
+            const emptySlot = Array.from(document.querySelectorAll('.symbol-slot'))
+                .find(slot => !slot.textContent);
+            
+            if (emptySlot) {
+                emptySlot.textContent = symbolEl.textContent;
+                this.checkSymbolSolution();
+            }
+        }
+
+        checkSymbolSolution() {
+            const currentSymbols = Array.from(document.querySelectorAll('.symbol-slot'))
+                .map(slot => slot.textContent)
+                .filter(symbol => symbol); // Remove empty slots
+
+            const level = this.levels[3];
+            if (currentSymbols.length === level.solution.length &&
+                this.compareArrays(currentSymbols, level.solution)) {
+                this.completeLevel();
+            }
+        }
+    }
+
+    // Initialize game when document is loaded
+    const game = new ProphecyGame();
+});
+
+// Add button pulse animation to CSS
+@keyframes buttonPulse {
+    0% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.2); }
+    100% { transform: translateX(-50%) scale(1); }
+} 

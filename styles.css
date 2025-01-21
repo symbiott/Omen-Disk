@@ -41,15 +41,17 @@ body {
     text-shadow: 0 0 5px var(--neon-green);
     animation: rain linear infinite;
     white-space: nowrap;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
 }
 
 @keyframes rain {
     0% {
-        transform: translateY(-100%);
+        transform: translateY(-100%) rotate(180deg);
         opacity: 1;
     }
     100% {
-        transform: translateY(100vh);
+        transform: translateY(100vh) rotate(180deg);
         opacity: 0;
     }
 }
@@ -299,4 +301,206 @@ body {
 @keyframes reverseRotate {
     from { transform: rotate(360deg); }
     to { transform: rotate(0deg); }
+}
+
+/* Game-specific styles */
+.hidden {
+    display: none !important;
+}
+
+#prophecy-terminal {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid var(--neon-purple);
+    border-radius: 5px;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+}
+
+.prophecy-text {
+    color: var(--neon-purple);
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 2rem 0;
+    text-shadow: 0 0 10px var(--neon-purple);
+}
+
+.instruction-text {
+    color: var(--neon-green);
+    font-size: 1.2rem;
+    text-align: center;
+    opacity: 0.8;
+}
+
+/* Level 1 specific styles */
+.prophecy-container {
+    padding: 2rem;
+}
+
+.prophecy-title {
+    color: var(--neon-purple);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 15px var(--neon-purple);
+}
+
+.word-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.prophecy-word {
+    padding: 0.5rem 1rem;
+    background: rgba(128, 0, 255, 0.2);
+    border: 1px solid var(--neon-purple);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.prophecy-word:hover {
+    background: rgba(128, 0, 255, 0.4);
+    transform: scale(1.1);
+}
+
+.prophecy-target {
+    min-height: 100px;
+    border: 2px dashed rgba(128, 0, 255, 0.3);
+    margin-top: 2rem;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.prophecy-word.selected {
+    background: rgba(57, 255, 20, 0.2);
+    border-color: var(--neon-green);
+}
+
+/* Level 2 - Sky King styles */
+.constellation-map {
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid var(--neon-purple);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+#starMap {
+    cursor: pointer;
+}
+
+/* Level 3 - Shaking Earth styles */
+.globe-container {
+    width: 300px;
+    height: 300px;
+    margin: 2rem auto;
+    perspective: 1000px;
+}
+
+.globe {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotate3D 20s linear infinite;
+    background: radial-gradient(circle at center,
+        var(--deep-purple) 0%,
+        var(--neon-purple) 60%,
+        transparent 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 30px var(--neon-purple);
+}
+
+.fault-lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(45deg,
+        transparent 45%,
+        var(--neon-green) 46%,
+        transparent 54%);
+    opacity: 0.5;
+}
+
+/* Level 4 - Last Vision styles */
+.symbol-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.prophecy-symbol {
+    font-size: 3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px var(--neon-purple);
+}
+
+.prophecy-symbol:hover {
+    transform: scale(1.2);
+    text-shadow: 0 0 20px var(--neon-purple);
+}
+
+.symbol-slots {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.symbol-slot {
+    width: 60px;
+    height: 60px;
+    border: 2px dashed var(--neon-purple);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+@keyframes rotate3D {
+    from { transform: rotateY(0deg) rotateX(20deg); }
+    to { transform: rotateY(360deg) rotateX(20deg); }
+}
+
+.prophecy-button {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: transparent;
+    border: 2px solid var(--neon-purple);
+    color: var(--neon-purple);
+    padding: 1rem 2rem;
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px var(--neon-purple);
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.2);
+}
+
+.prophecy-button:hover {
+    background: rgba(255, 0, 255, 0.1);
+    text-shadow: 0 0 10px var(--neon-purple);
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
+    transform: translateX(-50%) scale(1.1);
+}
+
+.prophecy-button:active {
+    transform: translateX(-50%) scale(0.95);
 } 

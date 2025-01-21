@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OMEN DISK</title>
+    <title>OMEN DISK - Prophecies</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
@@ -12,20 +12,21 @@
     <div class="scanline"></div>
     
     <main class="container">
-        <div class="disk-container">
-            <div class="disk">
-                <div class="disk-energy"></div>
-                <div class="disk-beam"></div>
-                <div class="disk-inner">
-                    <div class="disk-center"></div>
+        <div id="game-container">
+            <div class="disk-container">
+                <div class="disk">
+                    <div class="disk-energy"></div>
+                    <div class="disk-beam"></div>
+                    <div class="disk-inner">
+                        <div class="disk-center" id="startButton"></div>
+                    </div>
                 </div>
+                <button id="prophecyButton" class="prophecy-button">PROPHECY</button>
             </div>
-        </div>
 
-        <div class="content-area">
-            <div id="terminal">
+            <div id="prophecy-terminal" class="hidden">
                 <div class="terminal-header">
-                    <span class="terminal-title">OMEN_DISK.exe</span>
+                    <span class="terminal-title">PROPHECY_INTERFACE.exe</span>
                     <div class="terminal-controls">
                         <span class="control minimize">_</span>
                         <span class="control maximize">□</span>
@@ -33,15 +34,73 @@
                     </div>
                 </div>
                 <div class="terminal-content">
-                    <p class="boot-sequence">INITIALIZING OMEN DISK...</p>
-                    <p class="boot-sequence">ACCESSING NEURAL NETWORK...</p>
-                    <p class="boot-sequence">CONNECTING TO FUTURE STREAMS...</p>
+                    <div id="start-screen" class="game-screen">
+                        <p class="prophecy-text">The future is written. Can you decipher it?</p>
+                        <p class="instruction-text">Click the orb to begin...</p>
+                    </div>
+                    
+                    <div id="level-1" class="game-screen hidden">
+                        <div class="prophecy-container">
+                            <p class="prophecy-title">The Great Fire</p>
+                            <div class="word-container">
+                                <!-- Words will be added by JavaScript -->
+                            </div>
+                            <div class="prophecy-target">
+                                <!-- Prophecy reconstruction area -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="level-2" class="game-screen hidden">
+                        <div class="prophecy-container">
+                            <p class="prophecy-title">Sky King</p>
+                            <div class="constellation-map">
+                                <canvas id="starMap" width="500" height="500"></canvas>
+                            </div>
+                            <div class="word-container">
+                                <!-- Words will be added by JavaScript -->
+                            </div>
+                            <div class="prophecy-target">
+                                <!-- Prophecy reconstruction area -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="level-3" class="game-screen hidden">
+                        <div class="prophecy-container">
+                            <p class="prophecy-title">The Shaking Earth</p>
+                            <div class="globe-container">
+                                <div class="globe">
+                                    <div class="fault-lines"></div>
+                                </div>
+                            </div>
+                            <div class="word-container">
+                                <!-- Words will be added by JavaScript -->
+                            </div>
+                            <div class="prophecy-target">
+                                <!-- Prophecy reconstruction area -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="level-4" class="game-screen hidden">
+                        <div class="prophecy-container">
+                            <p class="prophecy-title">The Last Vision</p>
+                            <div class="symbol-container">
+                                <!-- Symbols will be added by JavaScript -->
+                            </div>
+                            <div class="vision-display">
+                                <p class="prophecy-text">Choose the symbols to complete the final prophecy...</p>
+                                <div class="symbol-slots">
+                                    <!-- Symbol slots will be added by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
-
-    <!-- It will be created by JavaScript -->
 
     <script src="script.js"></script>
 </body>
