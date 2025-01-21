@@ -645,15 +645,36 @@ body {
 
 /* Question styles */
 .question-container {
-    margin: 2rem 0;
+    padding: 2rem;
+    border: 2px solid var(--neon-purple);
+    background: rgba(0, 0, 0, 0.8);
+    margin: 2rem auto;
+    max-width: 800px;
+    position: relative;
+    animation: containerGlow 4s ease-in-out infinite;
+}
+
+@keyframes containerGlow {
+    0%, 100% { box-shadow: 0 0 10px var(--neon-purple); }
+    50% { box-shadow: 0 0 20px var(--neon-purple); }
 }
 
 .question-text {
-    color: var(--neon-purple);
-    font-size: 1.8rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    text-shadow: 0 0 10px var(--neon-purple);
+    opacity: 0;
+    animation: decryptText 1s ease-out 0.5s forwards;
+}
+
+@keyframes decryptText {
+    from { 
+        opacity: 0;
+        transform: translateY(10px);
+        text-shadow: 0 0 10px var(--neon-purple);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+        text-shadow: 0 0 5px var(--neon-purple);
+    }
 }
 
 .answers-container {
@@ -674,6 +695,24 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: left;
+    opacity: 0;
+    animation: fadeInAnswer 0.5s ease-out forwards;
+}
+
+.answer-button:nth-child(1) { animation-delay: 1s; }
+.answer-button:nth-child(2) { animation-delay: 1.2s; }
+.answer-button:nth-child(3) { animation-delay: 1.4s; }
+.answer-button:nth-child(4) { animation-delay: 1.6s; }
+
+@keyframes fadeInAnswer {
+    from { 
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .answer-button:hover {
@@ -690,7 +729,8 @@ body {
 .result-container {
     text-align: center;
     padding: 2rem;
-    animation: fadeIn 1s ease-out;
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0;
 }
 
 .result-description {
@@ -704,6 +744,37 @@ body {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+.outro-text {
+    color: var(--neon-green);
+    font-size: 1.1rem;
+    margin: 2rem 0;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1s forwards;
+}
+
+.result-container .glitch-text {
+    animation: glitchReveal 2s ease-out forwards;
+}
+
+@keyframes glitchReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+        filter: blur(10px);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.1);
+        filter: blur(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
 }
 
 /* Update social links styles */
@@ -747,4 +818,21 @@ body {
 /* Remove old social-link styles */
 .social-link {
     display: none;
+}
+
+/* Transmission effect styles */
+.transmission-effect {
+    color: var(--neon-green);
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: transmissionFade 2s ease-out forwards;
+}
+
+@keyframes transmissionFade {
+    0% { opacity: 0; transform: translateY(-10px); }
+    20% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; }
+    100% { opacity: 0.5; }
 } 

@@ -99,7 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             prophecyButton.style.animation = '';
             
-            // Just show quiz without hiding the disk
+            // Hide the prophecy button
+            prophecyButton.style.opacity = '0';
+            prophecyButton.style.pointerEvents = 'none';
+            
+            // Show quiz terminal
             quizTerminal.classList.remove('hidden');
             
             // Start the quiz
