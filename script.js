@@ -98,7 +98,16 @@ document.addEventListener('DOMContentLoaded', () => {
         
         setTimeout(() => {
             prophecyButton.style.animation = '';
-            startQuiz();
+            
+            // Hide disk container
+            document.querySelector('.disk-container').style.display = 'none';
+            
+            // Show quiz terminal
+            quizTerminal.classList.remove('hidden');
+            
+            // Add glitch effect to title
+            const title = quizIntro.querySelector('.glitch-text');
+            title.classList.add('glitch-animate');
         }, 500);
     });
 
@@ -166,10 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const prophecyText = quizIntro.querySelector('.prophecy-text');
         prophecyText.style.animation = 'typing 3s steps(60, end)';
         
-        // Add glitch effect to title
-        const title = quizIntro.querySelector('.glitch-text');
-        title.classList.add('glitch-animate');
-
         // Add continue button functionality
         const continueButton = document.getElementById('continueButton');
         continueButton.addEventListener('click', () => {
