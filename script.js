@@ -99,10 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             prophecyButton.style.animation = '';
             
-            // Hide disk container
+            // Hide disk container and show quiz
             document.querySelector('.disk-container').style.display = 'none';
+            quizTerminal.classList.remove('hidden');
             
-            // Show quiz terminal and start quiz
+            // Start the quiz
             startQuiz();
         }, 500);
     });
