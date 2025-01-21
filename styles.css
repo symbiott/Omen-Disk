@@ -509,4 +509,98 @@ body {
     0% { transform: translateX(-50%) scale(1); }
     50% { transform: translateX(-50%) scale(1.2); }
     100% { transform: translateX(-50%) scale(1); }
+}
+
+/* Quiz Terminal Styles */
+#quiz-terminal {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid var(--neon-purple);
+    border-radius: 5px;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: rgba(128, 0, 255, 0.1);
+    border-bottom: 2px solid var(--neon-purple);
+}
+
+.terminal-title {
+    color: var(--neon-purple);
+    font-size: 1.2rem;
+}
+
+.terminal-content {
+    padding: 2rem;
+}
+
+/* Quiz Content Styles */
+.quiz-screen {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.quiz-screen.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.glitch-text {
+    color: var(--neon-purple);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px var(--neon-purple);
+    position: relative;
+}
+
+.glitch-animate {
+    animation: glitch 1s linear infinite;
+}
+
+.prophecy-text {
+    color: var(--neon-green);
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 2rem 0;
+    overflow: hidden;
+    white-space: pre-wrap;
+    border-right: 2px solid var(--neon-green);
+}
+
+/* Typing Animation */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* Glitch Animation */
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 var(--neon-purple), -0.05em -0.025em 0 var(--neon-green);
+    }
+    14% {
+        text-shadow: 0.05em 0 0 var(--neon-purple), -0.05em -0.025em 0 var(--neon-green);
+    }
+    15% {
+        text-shadow: -0.05em -0.025em 0 var(--neon-purple), 0.025em 0.025em 0 var(--neon-green);
+    }
+    49% {
+        text-shadow: -0.05em -0.025em 0 var(--neon-purple), 0.025em 0.025em 0 var(--neon-green);
+    }
+    50% {
+        text-shadow: 0.025em 0.05em 0 var(--neon-purple), 0.05em 0 0 var(--neon-green);
+    }
+    99% {
+        text-shadow: 0.025em 0.05em 0 var(--neon-purple), 0.05em 0 0 var(--neon-green);
+    }
+    100% {
+        text-shadow: -0.025em 0 0 var(--neon-purple), -0.025em -0.025em 0 var(--neon-green);
+    }
 } 

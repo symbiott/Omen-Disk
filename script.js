@@ -84,4 +84,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     createDigitalRain();
+
+    // Quiz functionality
+    const prophecyButton = document.getElementById('prophecyButton');
+    const quizTerminal = document.getElementById('quiz-terminal');
+    const quizIntro = document.getElementById('quiz-intro');
+    const quizQuestions = document.getElementById('quiz-questions');
+    const quizResult = document.getElementById('quiz-result');
+
+    prophecyButton.addEventListener('click', () => {
+        // Add button click effect
+        prophecyButton.style.animation = 'buttonPulse 0.5s ease-out';
+        
+        setTimeout(() => {
+            prophecyButton.style.animation = '';
+            startQuiz();
+        }, 500);
+    });
+
+    function startQuiz() {
+        // Hide the prophecy button
+        prophecyButton.style.display = 'none';
+        
+        // Show the quiz terminal
+        quizTerminal.classList.remove('hidden');
+        
+        // Add typing animation to intro text
+        const prophecyText = quizIntro.querySelector('.prophecy-text');
+        prophecyText.style.animation = 'typing 3s steps(60, end)';
+        
+        // Add glitch effect to title
+        const title = quizIntro.querySelector('.glitch-text');
+        title.classList.add('glitch-animate');
+    }
 }); 
