@@ -152,6 +152,10 @@ document.addEventListener('DOMContentLoaded', () => {
             prophecyButton.addEventListener('click', () => {
                 // Add button click effect
                 prophecyButton.style.animation = 'buttonPulse 0.5s ease-out';
+                
+                // Initialize first level
+                this.initializeLevel(1);
+                
                 setTimeout(() => {
                     prophecyButton.style.animation = '';
                     this.startGame();
