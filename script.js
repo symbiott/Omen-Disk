@@ -153,9 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Add button click effect
                 prophecyButton.style.animation = 'buttonPulse 0.5s ease-out';
                 
-                // Initialize first level
-                this.initializeLevel(1);
-                
                 setTimeout(() => {
                     prophecyButton.style.animation = '';
                     this.startGame();
@@ -167,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Hide the prophecy button
             document.getElementById('prophecyButton').style.display = 'none';
             
+            // Show the terminal
             this.terminal.classList.remove('hidden');
             this.currentLevel = 1;
             
@@ -174,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 document.getElementById('start-screen').classList.add('hidden');
                 document.getElementById('level-1').classList.remove('hidden');
+                this.initializeLevel(1); // Initialize first level after showing it
             }, 2000);
         }
 
@@ -181,9 +180,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const level = this.levels.find(l => l.id === levelId);
             if (!level) return;
 
+            // Clear existing words
             const wordContainer = document.querySelector('.word-container');
-            const words = this.shuffleArray([...level.words]);
+            wordContainer.innerHTML = '';
 
+            // Clear target area
+            const targetContainer = document.querySelector('.prophecy-target');
+            targetContainer.innerHTML = '';
+
+            // Add new words
+            const words = this.shuffleArray([...level.words]);
             words.forEach(word => {
                 const wordElement = document.createElement('div');
                 wordElement.className = 'prophecy-word';
@@ -356,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Initialize game when document is loaded
-    const game = new ProphecyGame();
+    window.game = new ProphecyGame(); // Make it globally accessible for debugging
 });
 
 // Add button pulse animation to CSS
