@@ -101,6 +101,9 @@ body {
     background: var(--black);
     position: relative;
     box-shadow: 0 0 50px var(--neon-purple);
+    animation: 
+        pulse 4s ease-in-out infinite,
+        slowRotate 20s linear infinite;
 }
 
 /* Add concentric circles effect */
@@ -136,6 +139,7 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
+    animation: reverseRotate 15s linear infinite;
 }
 
 /* Add horizontal beam effect */
@@ -189,7 +193,9 @@ body {
             transparent 60%,
             rgba(255, 0, 255, 0.1) 70%,
             transparent 80%);
-    animation: pulse 4s ease-in-out infinite;
+    animation: 
+        pulse 4s ease-in-out infinite,
+        slowRotate 25s linear infinite;
 }
 
 @keyframes pulse {
@@ -282,4 +288,15 @@ body {
 @keyframes datafall {
     0% { transform: translateY(-100%); }
     100% { transform: translateY(100vh); }
+}
+
+/* Add new keyframes for rotations */
+@keyframes slowRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes reverseRotate {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
 } 
