@@ -50,4 +50,21 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => document.body.classList.remove('matrix-mode'), 5000);
         }
     });
+
+    // Create data streams
+    function createDataStreams() {
+        const container = document.getElementById('dataStreams');
+        const streamCount = 20;
+
+        for (let i = 0; i < streamCount; i++) {
+            const stream = document.createElement('div');
+            stream.className = 'data-stream';
+            stream.style.left = `${Math.random() * 100}%`;
+            stream.style.height = `${Math.random() * 20 + 10}%`;
+            stream.style.animationDelay = `${Math.random() * 2}s`;
+            container.appendChild(stream);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', createDataStreams);
 }); 
