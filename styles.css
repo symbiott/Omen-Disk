@@ -1,7 +1,7 @@
 :root {
     --black: #000000;
-    --deep-purple: #967BB6;
-    --neon-purple: #E6E6FA;
+    --deep-purple: #9370DB;
+    --neon-purple: #B19CD9;
     --emerald: #50C878;
     --neon-green: #39FF14;
     --text-primary: #ffffff;
@@ -200,7 +200,7 @@ body {
     background: 
         radial-gradient(circle at center,
             transparent 60%,
-            rgba(230, 230, 250, 0.1) 70%,
+            rgba(177, 156, 217, 0.1) 70%,
             transparent 80%);
     animation: 
         pulse 4s ease-in-out infinite,
@@ -219,7 +219,7 @@ body {
     border-radius: 5px;
     padding: 20px;
     margin-top: 2rem;
-    box-shadow: 0 0 10px rgba(230, 230, 250, 0.2);
+    box-shadow: 0 0 10px rgba(177, 156, 217, 0.2);
 }
 
 .terminal-header {
@@ -363,7 +363,7 @@ body {
 
 .prophecy-word {
     padding: 0.5rem 1rem;
-    background: rgba(150, 123, 182, 0.1);
+    background: rgba(147, 112, 219, 0.1);
     border: 1px solid var(--neon-purple);
     color: var(--text-primary);
     cursor: pointer;
@@ -372,13 +372,13 @@ body {
 }
 
 .prophecy-word:hover {
-    background: rgba(150, 123, 182, 0.2);
+    background: rgba(147, 112, 219, 0.2);
     transform: scale(1.1);
 }
 
 .prophecy-target {
     min-height: 100px;
-    border: 2px dashed rgba(150, 123, 182, 0.1);
+    border: 2px dashed rgba(147, 112, 219, 0.1);
     margin-top: 2rem;
     padding: 1rem;
     display: flex;
@@ -500,13 +500,13 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     text-shadow: 0 0 5px var(--neon-purple);
-    box-shadow: 0 0 10px rgba(230, 230, 250, 0.2);
+    box-shadow: 0 0 10px rgba(177, 156, 217, 0.2);
 }
 
 .prophecy-button:hover {
-    background: rgba(230, 230, 250, 0.1);
+    background: rgba(177, 156, 217, 0.1);
     text-shadow: 0 0 10px var(--neon-purple);
-    box-shadow: 0 0 20px rgba(230, 230, 250, 0.4);
+    box-shadow: 0 0 20px rgba(177, 156, 217, 0.4);
     transform: translateX(-50%) scale(1.1);
 }
 
@@ -538,7 +538,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem 1rem;
-    background: rgba(150, 123, 182, 0.1);
+    background: rgba(147, 112, 219, 0.1);
     border-bottom: 2px solid var(--neon-purple);
 }
 
@@ -629,13 +629,13 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     text-shadow: 0 0 5px var(--neon-purple);
-    box-shadow: 0 0 10px rgba(230, 230, 250, 0.2);
+    box-shadow: 0 0 10px rgba(177, 156, 217, 0.2);
 }
 
 .continue-button:hover {
-    background: rgba(230, 230, 250, 0.1);
+    background: rgba(177, 156, 217, 0.1);
     text-shadow: 0 0 10px var(--neon-purple);
-    box-shadow: 0 0 20px rgba(230, 230, 250, 0.4);
+    box-shadow: 0 0 20px rgba(177, 156, 217, 0.4);
     transform: scale(1.1);
 }
 
@@ -697,7 +697,7 @@ body {
     margin: 2rem 0;
     padding: 2rem;
     border: 2px solid var(--neon-purple);
-    background: rgba(150, 123, 182, 0.1);
+    background: rgba(147, 112, 219, 0.1);
     border-radius: 5px;
 }
 
