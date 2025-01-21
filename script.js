@@ -116,5 +116,24 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add glitch effect to title
         const title = quizIntro.querySelector('.glitch-text');
         title.classList.add('glitch-animate');
+
+        // Add continue button functionality
+        const continueButton = document.getElementById('continueButton');
+        continueButton.addEventListener('click', () => {
+            // Add button click effect
+            continueButton.style.animation = 'buttonPulse 0.5s ease-out';
+            
+            setTimeout(() => {
+                continueButton.style.animation = '';
+                showQuestions();
+            }, 500);
+        });
+    }
+
+    function showQuestions() {
+        // Hide intro screen
+        document.getElementById('quiz-intro').classList.add('hidden');
+        // Show questions screen
+        document.getElementById('quiz-questions').classList.remove('hidden');
     }
 }); 
