@@ -102,12 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Hide disk container
             document.querySelector('.disk-container').style.display = 'none';
             
-            // Show quiz terminal
-            quizTerminal.classList.remove('hidden');
-            
-            // Add glitch effect to title
-            const title = quizIntro.querySelector('.glitch-text');
-            title.classList.add('glitch-animate');
+            // Show quiz terminal and start quiz
+            startQuiz();
         }, 500);
     });
 
@@ -174,6 +170,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add typing animation to intro text
         const prophecyText = quizIntro.querySelector('.prophecy-text');
         prophecyText.style.animation = 'typing 3s steps(60, end)';
+        
+        // Add glitch effect to title
+        const title = quizIntro.querySelector('.glitch-text');
+        title.classList.add('glitch-animate');
         
         // Add continue button functionality
         const continueButton = document.getElementById('continueButton');
