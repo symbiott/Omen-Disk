@@ -51,20 +51,59 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Create data streams
-    function createDataStreams() {
-        const container = document.getElementById('dataStreams');
-        const streamCount = 20;
+    // Create digital rain
+    function createDigitalRain() {
+        const container = document.createElement('div');
+        container.className = 'digital-rain';
+        document.body.appendChild(container);
 
-        for (let i = 0; i < streamCount; i++) {
-            const stream = document.createElement('div');
-            stream.className = 'data-stream';
-            stream.style.left = `${Math.random() * 100}%`;
-            stream.style.height = `${Math.random() * 20 + 10}%`;
-            stream.style.animationDelay = `${Math.random() * 2}s`;
-            container.appendChild(stream);
+        const characters = 'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ1234567890';
+        const columnCount = Math.floor(window.innerWidth / 20); // Adjust spacing
+
+        function createRainColumn() {
+            const column = document.createElement('div');
+            column.className = 'rain-column';
+            
+            // Random position and animation properties
+            column.style.left = `${Math.random() * 100}%`;
+            column.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            
+            // Create random string of characters
+            let rainText = '';
+            const length = Math.floor(Math.random() * 20) + 10;
+            for (let i = 0; i < length; i++) {
+                rainText += characters[Math.floor(Math.random() * characters.length)];
+            }
+            column.textContent = rainText;
+            
+            // Remove column after animation ends
+            column.addEventListener('animationend', () => {
+                column.remove();
+            });
+            
+            container.appendChild(column);
         }
+
+        // Create initial columns
+        for (let i = 0; i < columnCount; i++) {
+            setTimeout(() => {
+                createRainColumn();
+            }, Math.random() * 2000);
+        }
+
+        // Continuously create new columns
+        setInterval(() => {
+            if (container.childElementCount < columnCount) {
+                createRainColumn();
+            }
+        }, 100);
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            const newColumnCount = Math.floor(window.innerWidth / 20);
+            columnCount = newColumnCount;
+        });
     }
 
-    document.addEventListener('DOMContentLoaded', createDataStreams);
+    createDigitalRain();
 }); 
