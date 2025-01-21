@@ -99,8 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             prophecyButton.style.animation = '';
             
-            // Hide disk container and show quiz
-            document.querySelector('.disk-container').style.display = 'none';
+            // Just show quiz without hiding the disk
             quizTerminal.classList.remove('hidden');
             
             // Start the quiz
@@ -162,9 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let userAnswers = [];
 
     function startQuiz() {
-        // Hide the prophecy button
-        prophecyButton.style.display = 'none';
-        
         // Show the quiz terminal
         quizTerminal.classList.remove('hidden');
         

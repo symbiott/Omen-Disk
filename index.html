@@ -42,11 +42,25 @@
                 </div>
                 
                 <div id="quiz-questions" class="quiz-screen hidden">
-                    <!-- Questions will be added by JavaScript -->
+                    <div class="question-container">
+                        <div class="transmission-effect">INCOMING TRANSMISSION...</div>
+                        <h2 class="question-text"></h2>
+                        <div class="answers-container">
+                            <!-- Answer buttons will be added by JavaScript -->
+                        </div>
+                    </div>
                 </div>
 
                 <div id="quiz-result" class="quiz-screen hidden">
-                    <!-- Results will be added by JavaScript -->
+                    <div class="result-container">
+                        <div class="transmission-effect">PROPHECY DECRYPTED</div>
+                        <h2 class="glitch-text"></h2>
+                        <div class="result-description">
+                            <p class="prophecy-text"></p>
+                        </div>
+                        <p class="outro-text">Your fragment of the Omen Disk is revealed. Will you fulfill your role, or bend the future to your will?</p>
+                        <button class="continue-button" onclick="location.reload()">RESTART THE DISK ></button>
+                    </div>
                 </div>
             </div>
         </div>
