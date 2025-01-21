@@ -704,4 +704,43 @@ body {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* Add social link styles */
+.social-link {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--neon-purple);
+    z-index: 10;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.twitter-icon {
+    width: 24px;
+    height: 24px;
+    filter: drop-shadow(0 0 5px var(--neon-purple));
+}
+
+.coming-soon {
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    text-shadow: 0 0 5px var(--neon-purple);
+}
+
+.social-link:hover {
+    transform: scale(1.1);
+    color: var(--neon-green);
+}
+
+.social-link:hover .twitter-icon {
+    filter: drop-shadow(0 0 5px var(--neon-green));
+}
+
+.social-link:hover .coming-soon {
+    text-shadow: 0 0 5px var(--neon-green);
 } 
