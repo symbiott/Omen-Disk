@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OMEN DISK - Prophecies</title>
+    <title>OMEN DISK</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
@@ -12,91 +12,38 @@
     <div class="scanline"></div>
     
     <main class="container">
-        <div id="game-container">
-            <div class="disk-container">
-                <div class="disk">
-                    <div class="disk-energy"></div>
-                    <div class="disk-beam"></div>
-                    <div class="disk-inner">
-                        <div class="disk-center"></div>
-                    </div>
+        <div class="disk-container">
+            <div class="disk">
+                <div class="disk-energy"></div>
+                <div class="disk-beam"></div>
+                <div class="disk-inner">
+                    <div class="disk-center"></div>
                 </div>
-                <button id="prophecyButton" class="prophecy-button">PROPHECY</button>
             </div>
+            <button id="prophecyButton" class="prophecy-button">ACCESS THE DISK ></button>
+        </div>
 
-            <div id="prophecy-terminal" class="hidden">
-                <div class="terminal-header">
-                    <span class="terminal-title">PROPHECY_INTERFACE.exe</span>
-                    <div class="terminal-controls">
-                        <span class="control minimize">_</span>
-                        <span class="control maximize">□</span>
-                        <span class="control close">×</span>
-                    </div>
+        <div id="quiz-terminal" class="hidden">
+            <div class="terminal-header">
+                <span class="terminal-title">OMEN_INTERFACE.exe</span>
+                <div class="terminal-controls">
+                    <span class="control minimize">_</span>
+                    <span class="control maximize">□</span>
+                    <span class="control close">×</span>
                 </div>
-                <div class="terminal-content">
-                    <div id="start-screen" class="game-screen">
-                        <p class="prophecy-text">The future is written. Can you decipher it?</p>
-                        <p class="instruction-text">Click the orb to begin...</p>
-                    </div>
-                    
-                    <div id="level-1" class="game-screen hidden">
-                        <div class="prophecy-container">
-                            <p class="prophecy-title">The Great Fire</p>
-                            <div class="word-container">
-                                <!-- Words will be added by JavaScript -->
-                            </div>
-                            <div class="prophecy-target">
-                                <!-- Prophecy reconstruction area -->
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            <div class="terminal-content">
+                <div id="quiz-intro" class="quiz-screen">
+                    <h1 class="glitch-text">Fragments of the Omen Disk</h1>
+                    <p class="prophecy-text">The Omen Disk has decrypted visions of the future. Answer the riddles within to uncover your place in the fractured timeline.</p>
+                </div>
+                
+                <div id="quiz-questions" class="quiz-screen hidden">
+                    <!-- Questions will be added by JavaScript -->
+                </div>
 
-                    <div id="level-2" class="game-screen hidden">
-                        <div class="prophecy-container">
-                            <p class="prophecy-title">Sky King</p>
-                            <div class="constellation-map">
-                                <canvas id="starMap" width="500" height="500"></canvas>
-                            </div>
-                            <div class="word-container">
-                                <!-- Words will be added by JavaScript -->
-                            </div>
-                            <div class="prophecy-target">
-                                <!-- Prophecy reconstruction area -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="level-3" class="game-screen hidden">
-                        <div class="prophecy-container">
-                            <p class="prophecy-title">The Shaking Earth</p>
-                            <div class="globe-container">
-                                <div class="globe">
-                                    <div class="fault-lines"></div>
-                                </div>
-                            </div>
-                            <div class="word-container">
-                                <!-- Words will be added by JavaScript -->
-                            </div>
-                            <div class="prophecy-target">
-                                <!-- Prophecy reconstruction area -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="level-4" class="game-screen hidden">
-                        <div class="prophecy-container">
-                            <p class="prophecy-title">The Last Vision</p>
-                            <div class="symbol-container">
-                                <!-- Symbols will be added by JavaScript -->
-                            </div>
-                            <div class="vision-display">
-                                <p class="prophecy-text">Choose the symbols to complete the final prophecy...</p>
-                                <div class="symbol-slots">
-                                    <!-- Symbol slots will be added by JavaScript -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div id="quiz-result" class="quiz-screen hidden">
+                    <!-- Results will be added by JavaScript -->
                 </div>
             </div>
         </div>
